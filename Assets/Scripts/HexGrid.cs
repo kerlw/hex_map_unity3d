@@ -13,8 +13,8 @@ public class HexGrid : MonoBehaviour {
 
     public HexCell cellPrefab;
 
-    public Text cellLabelPrefab; 
-        
+    public Text cellLabelPrefab;
+
     private HexCell[] cells;
 
     private Canvas gridCanvas;
@@ -24,7 +24,7 @@ public class HexGrid : MonoBehaviour {
     void Awake() {
         gridCanvas = GetComponentInChildren<Canvas>();
         hexMesh = GetComponentInChildren<HexMesh>();
-        
+
         cells = new HexCell[height * width];
 
         for (int z = 0, i = 0; z < height; z++) {
@@ -50,12 +50,32 @@ public class HexGrid : MonoBehaviour {
         cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, z);
         cell.color = defaultColor;
 
+        /// set neighbors
+        if (x > 0) {
+            cell.SetNeighbor(HexDirection.W, cells[i - 1]);
+        }
+
+        if (z > 0) {
+            if ((z & 1) == 0) {    // odd rows
+                cell.SetNeighbor(HexDirection.SE, cells[i - width]);
+                if (x > 0) {
+                    cell.SetNeighbor(HexDirection.SW, cells[i - width - 1]);
+                }
+            } else {    // even rows
+                cell.SetNeighbor(HexDirection.SW, cells[i - width]);
+                if (x < width - 1) {
+                    cell.SetNeighbor(HexDirection.SE, cells[i - width + 1]);
+                }
+            }
+        }
+
+        /// show label for debug
         Text label = Instantiate<Text>(cellLabelPrefab);
         label.rectTransform.SetParent(gridCanvas.transform, false);
         label.rectTransform.anchoredPosition = new Vector2(position.x, position.z);
         label.text = cell.coordinates.ToString();
     }
-    
+
     // void Update() {
     //     if (Input.GetMouseButton(0)) {
     //         HandleInput();
