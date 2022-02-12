@@ -19,4 +19,6 @@ vertices and colors indexes, but because of different type of edge connection ty
 count is different too, its hard to index the vertices and colors when a cell's property has been changed.
 
 ## T4 ##
+Randomization makes things be more complex.
 
+Need to deal with color for different elevation.
