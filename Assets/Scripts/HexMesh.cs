@@ -109,14 +109,14 @@ public class HexMesh : MonoBehaviour {
 
             if (cell.Elevation <= neighbor.Elevation) {
                 if (cell.Elevation <= nextNeighbor.Elevation) {
-                    TriangulateCorner(v2, cell, v4, neighbor, v5, nextNeighbor);
+                    // TriangulateCorner(v2, cell, v4, neighbor, v5, nextNeighbor);
                 } else {
                     TriangulateCorner(v5, nextNeighbor, v2, cell, v4, neighbor);
                 }
             } else if (neighbor.Elevation <= nextNeighbor.Elevation) {
-                TriangulateCorner(v4, neighbor, v5, nextNeighbor, v2, cell);
+                // TriangulateCorner(v4, neighbor, v5, nextNeighbor, v2, cell);
             } else {
-                TriangulateCorner(v5, nextNeighbor, v2, cell, v4, neighbor);
+                // TriangulateCorner(v5, nextNeighbor, v2, cell, v4, neighbor);
             }
         }
     }
@@ -197,9 +197,6 @@ public class HexMesh : MonoBehaviour {
         AddTriangle(begin, v3, v4);
         AddTriangleColor(beginCell.color, c3, c4);
 
-        AddQuad(v3, v4, left, right);
-        AddQuadColor(c3, c4, leftCell.color, rightCell.color);
-
         for (int i = 2; i < HexMetrics.terraceSteps; i++) {
             Vector3 v1 = v3;
             Vector3 v2 = v4;
@@ -214,7 +211,7 @@ public class HexMesh : MonoBehaviour {
             AddQuad(v1, v2, v3, v4);
             AddQuadColor(c1, c2, c3, c4);
         }
-
+        
         AddQuad(v3, v4, left, right);
         AddQuadColor(c3, c4, leftCell.color, rightCell.color);
     }
