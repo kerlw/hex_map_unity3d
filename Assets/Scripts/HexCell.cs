@@ -3,15 +3,19 @@ using UnityEngine;
 public class HexCell : MonoBehaviour {
     public HexCoordinates coordinates;
 
-    public Color color;
+    Color color;
 
-    private int elevation;
+    private int elevation = int.MinValue;
 
     public RectTransform uiRect;
 
     public int Elevation {
         get { return elevation; }
         set {
+            if (elevation == value) {
+                return;
+            }
+
             elevation = value;
             Vector3 position = transform.localPosition;
             position.y = value * HexMetrics.elevationStep;
@@ -22,13 +26,30 @@ public class HexCell : MonoBehaviour {
             Vector3 uiPosition = uiRect.localPosition;
             uiPosition.z = -position.y; //elevation * -HexMetrics.elevationStep;
             uiRect.localPosition = uiPosition;
+
+            Refresh();
         }
     }
 
-    public Vector3 Position {
+    public Color Color {
         get {
-            return transform.localPosition;
+            return color;
         }
+
+        set {
+            if (color == value) {
+                return;
+            }
+
+            color = value;
+            Refresh();
+        }
+    }
+
+    public HexGridChunk chunk;
+
+    public Vector3 Position {
+        get { return transform.localPosition; }
     }
 
     [SerializeField] private HexCell[] neighbors;
@@ -48,5 +69,15 @@ public class HexCell : MonoBehaviour {
 
     public HexEdgeType GetEdgeType(HexCell otherCell) {
         return HexMetrics.GetEdgeType(elevation, otherCell.elevation);
+    }
+
+    public void Refresh() {
+        if (chunk) {
+            chunk.Refresh();
+            for (int i = 0; i < neighbors.Length; i++) {
+                HexCell neighbor = neighbors[i];
+                neighbor?.chunk?.Refresh();
+            }       
+        }
     }
 }

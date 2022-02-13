@@ -22,3 +22,8 @@ count is different too, its hard to index the vertices and colors when a cell's 
 Randomization makes things be more complex.
 
 Need to deal with color for different elevation.
+
+## T5 ##
+Chunks, camera, brush
+
+Chunks solved the problem presented in T1 for large map.
