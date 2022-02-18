@@ -84,6 +84,10 @@ public class HexCell : MonoBehaviour {
         get { return hasIncomingRiver != hasOutgoingRiver; }
     }
 
+    public float RiverSurfaceY {
+        get { return (elevation + HexMetrics.riverSurfaceElevationOffset) * HexMetrics.elevationStep; }
+    }
+
     public bool HasRiverThroughEdge(HexDirection direction) {
         return hasIncomingRiver && incomingRiver == direction ||
                hasOutgoingRiver && outgoingRiver == direction;
