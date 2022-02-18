@@ -27,3 +27,11 @@ Need to deal with color for different elevation.
 Chunks, camera, brush
 
 Chunks solved the problem presented in T1 for large map.
+
+## T6 ##
+Rivers can be implemented in 3 ways:
+1. let then flow from cell to cell.(Endless Legend, this tutorial)
+2. let them flow in between cells, from edge to edge. (CIV5)
+3. use water cell to suggest rivers. (Age of Wonders 3)
+
+Rivers make things be more complex.
