@@ -8,7 +8,7 @@ public class HexMapEditor : MonoBehaviour {
         No
     }
 
-    private OptionalToggle riverMode;
+    private OptionalToggle riverMode, roadMode;
 
     public Color[] colors;
 
@@ -105,11 +105,24 @@ public class HexMapEditor : MonoBehaviour {
 
         if (riverMode == OptionalToggle.No) {
             cell.RemoveRiver();
-        } else if (isDrag && riverMode == OptionalToggle.Yes) {
+        }
+
+        if (roadMode == OptionalToggle.No) {
+            cell.RemoveRoads();
+        }
+
+        if (isDrag) {
             // if want to ignore brush size, here use previousCell instead of otherCell.
             HexCell otherCell = cell.GetNeighbor(dragDirection.Opposite());
-            if (otherCell)
-                otherCell.SetOutgoingRiver(dragDirection);
+            if (otherCell) {
+                if (riverMode == OptionalToggle.Yes) {
+                    otherCell.SetOutgoingRiver(dragDirection);
+                }
+
+                if (roadMode == OptionalToggle.Yes) {
+                    otherCell.AddRoad(dragDirection);
+                }
+            }
         }
     }
 
@@ -130,6 +143,10 @@ public class HexMapEditor : MonoBehaviour {
 
     public void SetRiverMode(int mode) {
         riverMode = (OptionalToggle) mode;
+    }
+
+    public void SetRoadMode(int mode) {
+        roadMode = (OptionalToggle) mode;
     }
 
     public void SetBrushSize(float size) {

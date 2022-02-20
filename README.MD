@@ -35,3 +35,9 @@ Rivers can be implemented in 3 ways:
 3. use water cell to suggest rivers. (Age of Wonders 3)
 
 Rivers make things be more complex.
+XXX： Only one flow river each cell, multiple rivers not supported.
+
+## T7 ##
+Roads' implementation is similar to rivers, but roads must support crossroads.
+
+Roads & rivers implementation is most about generating mesh.
