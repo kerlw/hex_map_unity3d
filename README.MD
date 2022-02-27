@@ -41,3 +41,8 @@ XXX： Only one flow river each cell, multiple rivers not supported.
 Roads' implementation is similar to rivers, but roads must support crossroads.
 
 Roads & rivers implementation is most about generating mesh.
+
+## T8 ##
+Water cell is supported now.
+
+I need to learn more about how to write a shader file.
