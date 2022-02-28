@@ -98,6 +98,79 @@ MonoBehaviour:
   useColors: 0
   useUVCoordinates: 1
   useUV2Coordinate: 0
+--- !u!1 &296939783848669844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6412978760992840316}
+  - component: {fileID: 6520765611687518095}
+  m_Layer: 0
+  m_Name: Features
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6412978760992840316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296939783848669844}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3282416883216086717}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6520765611687518095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296939783848669844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29deb1c36466341db873c05edd9978ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  urbanCollections:
+  - prefabs:
+    - {fileID: 161420696959770512, guid: f36602db9bfe343b49660c95d99a00c3, type: 3}
+    - {fileID: 161420696959770512, guid: 6ca05cb52480240a18fb5e43e1e2afde, type: 3}
+  - prefabs:
+    - {fileID: 161420696959770512, guid: 832b290de82ab47068204a8670dc277b, type: 3}
+    - {fileID: 161420696959770512, guid: 0190b96f91303427bbfcbf87d9fe524b, type: 3}
+  - prefabs:
+    - {fileID: 161420696959770512, guid: 7bfdbf04ae8f84369981736d18c2853d, type: 3}
+    - {fileID: 161420696959770512, guid: 0e94a674a372f47fcb3bd594b3eed441, type: 3}
+  farmCollections:
+  - prefabs:
+    - {fileID: 161420696959770512, guid: 799736f3c6d294209abe4213b5deb8d3, type: 3}
+    - {fileID: 161420696959770512, guid: ea0c77830316a4c1cad2f0b26be24bd8, type: 3}
+  - prefabs:
+    - {fileID: 161420696959770512, guid: 2ec61eeaacbe8415eb7fdb874497694b, type: 3}
+    - {fileID: 161420696959770512, guid: 9d5cdadde7b2c4d3c91dbcc747512d99, type: 3}
+  - prefabs:
+    - {fileID: 161420696959770512, guid: 27b4891e3c1354eef8c9b120d6653b87, type: 3}
+    - {fileID: 161420696959770512, guid: 9d5cdadde7b2c4d3c91dbcc747512d99, type: 3}
+  plantCollections:
+  - prefabs:
+    - {fileID: 161420696959770512, guid: f6e2ca94bc41c4d38b746307cb95a115, type: 3}
+    - {fileID: 161420696959770512, guid: 1535b95fedaad46a298ec111b65a36df, type: 3}
+  - prefabs:
+    - {fileID: 161420696959770512, guid: fba0485c4626740ac875606efd7837df, type: 3}
+    - {fileID: 161420696959770512, guid: 67bd858fcb8d648b8bd57168df43d6b4, type: 3}
+  - prefabs:
+    - {fileID: 161420696959770512, guid: 9efaa6324c9894436a4c41cdee8fc50e, type: 3}
+    - {fileID: 161420696959770512, guid: 476aa6feec7d94fe596debcd0358e371, type: 3}
 --- !u!1 &1764812803757154633
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,6 +483,7 @@ Transform:
   - {fileID: 6797760828581318696}
   - {fileID: 8352389102577369011}
   - {fileID: 5338640432914924687}
+  - {fileID: 6412978760992840316}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -431,6 +505,7 @@ MonoBehaviour:
   water: {fileID: 121431076748223503}
   waterShore: {fileID: 1813952873771562403}
   estuaries: {fileID: 1071055279376943882}
+  features: {fileID: 6520765611687518095}
 --- !u!1 &5041497003652847195
 GameObject:
   m_ObjectHideFlags: 0
