@@ -8,7 +8,7 @@ public class HexMapEditor : MonoBehaviour {
         No
     }
 
-    private OptionalToggle riverMode, roadMode;
+    private OptionalToggle riverMode, roadMode, walledMode;
 
     public Color[] colors;
 
@@ -133,6 +133,10 @@ public class HexMapEditor : MonoBehaviour {
             cell.RemoveRoads();
         }
 
+        if (walledMode != OptionalToggle.Ignore) {
+            cell.Walled = walledMode == OptionalToggle.Yes;
+        }
+
         if (isDrag) {
             // if want to ignore brush size, here use previousCell instead of otherCell.
             HexCell otherCell = cell.GetNeighbor(dragDirection.Opposite());
@@ -209,5 +213,9 @@ public class HexMapEditor : MonoBehaviour {
 
     public void SetPlantLevel(float level) {
         activePlantLevel = (int) level;
+    }
+
+    public void SetWalledMode(int mode) {
+        walledMode = (OptionalToggle) mode;
     }
 }

@@ -18,6 +18,18 @@ public class HexCell : MonoBehaviour {
 
     private int urbanLevel, farmLevel, plantLevel;
 
+    private bool walled;
+
+    public bool Walled {
+        get => walled;
+        set {
+            if (walled != value) {
+                walled = value;
+                Refresh();
+            }
+        }
+    }
+
     public int UrbanLevel {
         get { return urbanLevel; }
         set {

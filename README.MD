@@ -51,3 +51,6 @@ I need to learn more about how to write a shader file.
 Features : urban, farm and plant.
 
 The implementation is ugly.
+
+## T10 ##
+Walls are supported as a feature, perfect.
