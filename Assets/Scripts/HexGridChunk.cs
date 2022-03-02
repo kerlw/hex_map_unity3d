@@ -71,8 +71,12 @@ public class HexGridChunk : MonoBehaviour {
             Triangulate(d, cell);
         }
 
-        if (!cell.IsUnderWater && !cell.HasRiver && !cell.HasRoads) {
-            features.AddFeature(cell, cell.Position);
+        if (!cell.IsUnderWater) {
+            if (cell.IsSpecial) {
+                features.AddSpecialFeature(cell, cell.Position);
+            } else if (!cell.HasRiver && !cell.HasRoads) {
+                features.AddFeature(cell, cell.Position);
+            }
         }
 
         // Vector3 center = cell.transform.localPosition;

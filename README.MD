@@ -54,3 +54,8 @@ The implementation is ugly.
 
 ## T10 ##
 Walls are supported as a feature, perfect.
+
+## T11 ##
+Special features: wall tower, castle, ziggurat, megaflora.
+
+Feature conflicts are more complex now.
