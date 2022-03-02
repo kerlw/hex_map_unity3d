@@ -171,6 +171,8 @@ MonoBehaviour:
   - prefabs:
     - {fileID: 161420696959770512, guid: 9efaa6324c9894436a4c41cdee8fc50e, type: 3}
     - {fileID: 161420696959770512, guid: 476aa6feec7d94fe596debcd0358e371, type: 3}
+  wallTower: {fileID: 1736989017229708099, guid: 7a0426d6f8a7b4db6ad4aded39c929c2, type: 3}
+  bridge: {fileID: 4112765672455392830, guid: 6851ff9503b1244e48bd482df3babd30, type: 3}
   walls: {fileID: 1095898188392612868}
 --- !u!1 &1764812803757154633
 GameObject:

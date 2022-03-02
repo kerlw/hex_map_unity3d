@@ -7,6 +7,8 @@ using UnityEngine.Serialization;
 public class HexFeatureManager : MonoBehaviour {
     public HexFeatureCollection[] urbanCollections, farmCollections, plantCollections;
 
+    public Transform wallTower, bridge;
+
     private Transform container;
 
     public HexMesh walls;
@@ -113,7 +115,7 @@ public class HexFeatureManager : MonoBehaviour {
         }
     }
 
-    void AddWallSegment(Vector3 nearLeft, Vector3 farLeft, Vector3 nearRight, Vector3 farRight) {
+    void AddWallSegment(Vector3 nearLeft, Vector3 farLeft, Vector3 nearRight, Vector3 farRight, bool addTower = false) {
         nearLeft = HexMetrics.Perturb(nearLeft);
         nearRight = HexMetrics.Perturb(nearRight);
         farLeft = HexMetrics.Perturb(farLeft);
@@ -146,6 +148,15 @@ public class HexFeatureManager : MonoBehaviour {
 
         // add top
         walls.AddQuadUnperturbed(t1, t2, v3, v4);
+
+        if (addTower) {
+            Transform towerInstance = Instantiate(wallTower);
+            towerInstance.transform.localPosition = (left + right) * 0.5f;
+            Vector3 rightDirection = right - Vector3.left;
+            rightDirection.y = 0f;
+            towerInstance.transform.right = rightDirection;
+            towerInstance.SetParent(container, false);
+        }
     }
 
     void AddWallSegment(
@@ -162,7 +173,13 @@ public class HexFeatureManager : MonoBehaviour {
 
         if (hasLeftWall) {
             if (hasRightWall) {
-                AddWallSegment(pivot, left, pivot, right);
+                bool hasTower = false;
+                if (leftCell.Elevation == rightCell.Elevation) {
+                    HexHash hash = HexMetrics.SampleHashGrid((pivot + left + right) * (1f / 3f));
+                    hasTower = hash.e < HexMetrics.wallTowerThreshold;
+                }
+
+                AddWallSegment(pivot, left, pivot, right, hasTower);
             } else if (leftCell.Elevation < rightCell.Elevation) {
                 AddWallWedge(pivot, left, right);
             } else {
@@ -212,5 +229,16 @@ public class HexFeatureManager : MonoBehaviour {
         walls.AddQuadUnperturbed(v1, point, v3, pointTop);
         walls.AddQuadUnperturbed(point, v2, pointTop, v4);
         walls.AddTriangleUnperturbed(pointTop, v3, v4);
+    }
+
+    public void AddBridge(Vector3 roadCenter1, Vector3 roadCenter2) {
+        roadCenter1 = HexMetrics.Perturb(roadCenter1);
+        roadCenter2 = HexMetrics.Perturb(roadCenter2);
+        Transform instance = Instantiate(bridge);
+        instance.localPosition = (roadCenter1 + roadCenter2) * 0.5f;
+        instance.forward = roadCenter2 - roadCenter1;
+        float length = Vector3.Distance(roadCenter1, roadCenter2);
+        instance.localScale = new Vector3(1f, 1f, length * (1f / HexMetrics.bridgeDesignLength));
+        instance.SetParent(container, false);
     }
 }
