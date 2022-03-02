@@ -59,3 +59,6 @@ Walls are supported as a feature, perfect.
 Special features: wall tower, castle, ziggurat, megaflora.
 
 Feature conflicts are more complex now.
+
+## T12 ##
+Save & load, easy.

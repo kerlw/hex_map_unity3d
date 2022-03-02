@@ -1,15 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HexGrid : MonoBehaviour {
     public int chunkCountX = 4, chunkCountZ = 3;
 
+    public Color[] colors;
+
     private int cellCountX, cellCountZ;
 
-    public Color defaultColor = Color.white;
+    // public Color defaultColor = Color.white;
     // public Color touchedColor = Color.magenta;
 
     public HexGridChunk chunkPrefab;
@@ -30,6 +33,7 @@ public class HexGrid : MonoBehaviour {
         // assign noise source at first.
         HexMetrics.noiseSource = noiseSource;
         HexMetrics.InitializeHashGrid(seed);
+        HexMetrics.colors = colors;
 
         cellCountX = chunkCountX * HexMetrics.chunkSizeX;
         cellCountZ = chunkCountZ * HexMetrics.chunkSizeZ;
@@ -64,6 +68,7 @@ public class HexGrid : MonoBehaviour {
         if (!HexMetrics.noiseSource) {
             HexMetrics.noiseSource = noiseSource;
             HexMetrics.InitializeHashGrid(seed);
+            HexMetrics.colors = colors;
         }
     }
 
@@ -77,7 +82,7 @@ public class HexGrid : MonoBehaviour {
         // cell.transform.SetParent(transform, false);
         cell.transform.localPosition = position;
         cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, z);
-        cell.Color = defaultColor;
+        // cell.Color = defaultColor;
 
         /// set neighbors
         if (x > 0) {
@@ -159,6 +164,22 @@ public class HexGrid : MonoBehaviour {
     public void ShowUI(bool visible) {
         for (int i = 0; i < chunks.Length; i++) {
             chunks[i].ShowUI(visible);
+        }
+    }
+
+    public void Save(BinaryWriter writer) {
+        for (int i = 0; i < cells.Length; i++) {
+            cells[i].Save(writer);
+        }
+    }
+
+    public void Load(BinaryReader reader) {
+        for (int i = 0; i < cells.Length; i++) {
+            cells[i].Load(reader);
+        }
+
+        for (int i = 0; i < chunks.Length; i++) {
+            chunks[i].Refresh();
         }
     }
 }

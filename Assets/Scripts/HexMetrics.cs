@@ -44,8 +44,6 @@ public class HexMetrics {
 
     public const int hashGridSize = 256;
 
-    private static HexHash[] hashGrid;
-
     public const float wallHeight = 4f;
 
     public const float wallYOffset = -1f;
@@ -57,6 +55,10 @@ public class HexMetrics {
     public const float wallTowerThreshold = 0.5f;
 
     public const float bridgeDesignLength = 7f;
+
+    private static HexHash[] hashGrid;
+
+    public static Color[] colors;
 
     public static void InitializeHashGrid(int seed) {
         hashGrid = new HexHash[hashGridSize * hashGridSize];
