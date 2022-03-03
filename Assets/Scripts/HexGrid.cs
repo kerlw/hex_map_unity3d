@@ -6,11 +6,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HexGrid : MonoBehaviour {
-    public int chunkCountX = 4, chunkCountZ = 3;
+    public int cellCountX = 20, cellCountZ = 15;
+
+    int chunkCountX, chunkCountZ;
 
     public Color[] colors;
-
-    private int cellCountX, cellCountZ;
 
     // public Color defaultColor = Color.white;
     // public Color touchedColor = Color.magenta;
@@ -35,11 +35,7 @@ public class HexGrid : MonoBehaviour {
         HexMetrics.InitializeHashGrid(seed);
         HexMetrics.colors = colors;
 
-        cellCountX = chunkCountX * HexMetrics.chunkSizeX;
-        cellCountZ = chunkCountZ * HexMetrics.chunkSizeZ;
-
-        CreateChunks();
-        CreateCells();
+        // CreateMap();
     }
 
     void CreateChunks() {
@@ -168,12 +164,22 @@ public class HexGrid : MonoBehaviour {
     }
 
     public void Save(BinaryWriter writer) {
+        writer.Write(cellCountX);
+        writer.Write(cellCountZ);
         for (int i = 0; i < cells.Length; i++) {
             cells[i].Save(writer);
         }
     }
 
     public void Load(BinaryReader reader) {
+        int x = reader.ReadInt32();
+        int z = reader.ReadInt32();
+        if (x != cellCountX || z != cellCountZ) {
+            if (!CreateMap(x, z)) {
+                return;
+            }
+        }
+
         for (int i = 0; i < cells.Length; i++) {
             cells[i].Load(reader);
         }
@@ -181,5 +187,28 @@ public class HexGrid : MonoBehaviour {
         for (int i = 0; i < chunks.Length; i++) {
             chunks[i].Refresh();
         }
+    }
+
+    public bool CreateMap(int x, int z) {
+        if (x <= 0 || x % HexMetrics.chunkSizeX != 0 ||
+            z <= 0 || z % HexMetrics.chunkSizeZ != 0) {
+            Debug.LogError("Unsupported map size.");
+            return false;
+        }
+
+        if (chunks != null) {
+            for (int i = 0; i < chunks.Length; i++) {
+                Destroy(chunks[i].gameObject);
+            }
+        }
+
+        cellCountX = x;
+        cellCountZ = z;
+        chunkCountX = cellCountX / HexMetrics.chunkSizeX;
+        chunkCountZ = cellCountZ / HexMetrics.chunkSizeZ;
+        CreateChunks();
+        CreateCells();
+
+        return true;
     }
 }
