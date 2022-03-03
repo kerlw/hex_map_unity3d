@@ -10,7 +10,7 @@ public class HexGrid : MonoBehaviour {
 
     int chunkCountX, chunkCountZ;
 
-    public Color[] colors;
+    // public Color[] colors;
 
     // public Color defaultColor = Color.white;
     // public Color touchedColor = Color.magenta;
@@ -33,7 +33,7 @@ public class HexGrid : MonoBehaviour {
         // assign noise source at first.
         HexMetrics.noiseSource = noiseSource;
         HexMetrics.InitializeHashGrid(seed);
-        HexMetrics.colors = colors;
+        // HexMetrics.colors = colors;
 
         // CreateMap();
     }
@@ -64,7 +64,7 @@ public class HexGrid : MonoBehaviour {
         if (!HexMetrics.noiseSource) {
             HexMetrics.noiseSource = noiseSource;
             HexMetrics.InitializeHashGrid(seed);
-            HexMetrics.colors = colors;
+            // HexMetrics.colors = colors;
         }
     }
 

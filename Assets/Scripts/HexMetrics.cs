@@ -58,7 +58,7 @@ public class HexMetrics {
 
     private static HexHash[] hashGrid;
 
-    public static Color[] colors;
+    // public static Color[] colors;
 
     public static void InitializeHashGrid(int seed) {
         hashGrid = new HexHash[hashGridSize * hashGridSize];

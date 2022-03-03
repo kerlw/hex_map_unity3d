@@ -64,3 +64,9 @@ Feature conflicts are more complex now.
 Save & load, easy.
 
 ## T13 ##
+Map file manager.
+
+## T14 ##
+Terrain texture supported, beautiful.
+
+Need to learn more about texture.
