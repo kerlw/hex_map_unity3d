@@ -73,3 +73,6 @@ Need to learn more about texture.
 
 ## T15 ##
 Distance calculate, preparing for pathfinding.
+
+## T16 ##
+Pathfinding, basic A* algorithm.

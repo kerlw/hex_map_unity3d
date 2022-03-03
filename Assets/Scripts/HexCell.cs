@@ -35,6 +35,16 @@ public class HexCell : MonoBehaviour {
         }
     }
 
+    public HexCell PathFrom { get; set; }
+
+    public int SearchHeuristic { get; set; }
+
+    public int SearchPriority {
+        get { return distance + SearchHeuristic /** 5*/; }
+    }
+    
+    public HexCell NexWithSamePriority { get; set; }
+
     public int SpecialIndex {
         get => specialIndex;
         set {
@@ -428,5 +438,16 @@ public class HexCell : MonoBehaviour {
     void UpdateDistanceLabel() {
         Text label = uiRect.GetComponent<Text>();
         label.text = distance == int.MaxValue ? "" : distance.ToString();
+    }
+
+    public void DisableHighlight() {
+        Image highlight = uiRect.GetChild(0).GetComponent<Image>();
+        highlight.enabled = false;
+    }
+
+    public void EnableHighlight(Color color) {
+        Image highlight = uiRect.GetChild(0).GetComponent<Image>();
+        highlight.color = color;
+        highlight.enabled = true;
     }
 }
