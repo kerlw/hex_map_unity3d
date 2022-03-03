@@ -70,3 +70,6 @@ Map file manager.
 Terrain texture supported, beautiful.
 
 Need to learn more about texture.
+
+## T15 ##
+Distance calculate, preparing for pathfinding.

@@ -1,3 +1,6 @@
+using System.Collections;
+using UnityEditor;
+using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
 [System.Serializable]
@@ -34,6 +37,7 @@ public class HexCoordinates {
     }
 
     public static HexCoordinates FromPosition(Vector3 position) {
+        
         float x = position.x / (HexMetrics.innerRadius * 2f);
         float y = -x;
 
@@ -57,6 +61,13 @@ public class HexCoordinates {
                 iZ = -iX - iY;
             }
         }
+
         return new HexCoordinates(iX, iZ);
+    }
+
+    public int DistanceTo(HexCoordinates other) {
+        return ((x < other.x ? other.x - x : x - other.x) +
+                (Y < other.Y ? other.Y - Y : Y - other.Y) +
+                (z < other.z ? other.z - z : z - other.z)) / 2;
     }
 }

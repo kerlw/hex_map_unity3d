@@ -21,7 +21,6 @@ public class HexGridChunk : MonoBehaviour {
         // terrain = GetComponentInChildren<HexMesh>();
 
         cells = new HexCell[HexMetrics.chunkSizeX * HexMetrics.chunkSizeZ];
-        ShowUI(false);
     }
 
     // use `enabled` state to control hexMesh.Triangulate in LateUpdate
