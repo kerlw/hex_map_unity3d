@@ -8639,9 +8639,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1910713403}
-        m_TargetAssemblyTypeName: NewMapMenu, Assembly-CSharp
-        m_MethodName: CreateMediumMap
+      - m_Target: {fileID: 1365999881}
+        m_TargetAssemblyTypeName: SaveLoadMenu, Assembly-CSharp
+        m_MethodName: Delete
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

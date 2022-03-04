@@ -76,3 +76,7 @@ Distance calculate, preparing for pathfinding.
 
 ## T16 ##
 Pathfinding, basic A* algorithm.
+
+## T17 ##
+Improved pathfinding & path highlighting.
+

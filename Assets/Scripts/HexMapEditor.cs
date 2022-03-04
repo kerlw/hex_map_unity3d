@@ -66,18 +66,22 @@ public class HexMapEditor : MonoBehaviour {
             if (editMode) {
                 EditCells(currentCell);
             } else if (Input.GetKey((KeyCode.LeftShift)) && searchToCell != currentCell) {
-                if (searchFromCell) {
-                    searchFromCell.DisableHighlight();
-                }
+                if (searchFromCell != currentCell) {
+                    if (searchFromCell) {
+                        searchFromCell.DisableHighlight();
+                    }
 
-                searchFromCell = currentCell;
-                searchFromCell.EnableHighlight(Color.blue);
-                if (searchToCell) {
-                    hexGrid.FindPath(searchFromCell, searchToCell);
+                    searchFromCell = currentCell;
+                    searchFromCell.EnableHighlight(Color.blue);
+                    if (searchToCell) {
+                        hexGrid.FindPath(searchFromCell, searchToCell, 24);
+                    }
                 }
             } else if (searchFromCell && searchFromCell != currentCell) {
-                searchToCell = currentCell;
-                hexGrid.FindPath(searchFromCell, searchToCell);
+                if (searchToCell != currentCell) {
+                    searchToCell = currentCell;
+                    hexGrid.FindPath(searchFromCell, searchToCell, 24);
+                }
             }
 
             previousCell = currentCell;
