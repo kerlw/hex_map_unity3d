@@ -1,4 +1,5 @@
 using System.Collections;
+using System.IO;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
@@ -37,7 +38,6 @@ public class HexCoordinates {
     }
 
     public static HexCoordinates FromPosition(Vector3 position) {
-        
         float x = position.x / (HexMetrics.innerRadius * 2f);
         float y = -x;
 
@@ -69,5 +69,15 @@ public class HexCoordinates {
         return ((x < other.x ? other.x - x : x - other.x) +
                 (Y < other.Y ? other.Y - Y : Y - other.Y) +
                 (z < other.z ? other.z - z : z - other.z)) / 2;
+    }
+
+    public void Save(BinaryWriter writer) {
+        writer.Write(x);
+        writer.Write(z);
+    }
+
+    public static HexCoordinates Load(BinaryReader reader) {
+        HexCoordinates c = new HexCoordinates(reader.ReadInt32(), reader.ReadInt32());
+        return c;
     }
 }

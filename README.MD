@@ -80,3 +80,7 @@ Pathfinding, basic A* algorithm.
 ## T17 ##
 Improved pathfinding & path highlighting.
 
+## T18 ##
+Move units.
+
+It's moving not walking.

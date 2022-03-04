@@ -47,6 +47,8 @@ public class HexCell : MonoBehaviour {
 
     public HexCell NexWithSamePriority { get; set; }
 
+    public HexUnit Unit { get; set; }
+
     public int SpecialIndex {
         get => specialIndex;
         set {
@@ -251,11 +253,16 @@ public class HexCell : MonoBehaviour {
                 HexCell neighbor = neighbors[i];
                 neighbor?.chunk?.Refresh();
             }
+
+            if (Unit) {
+                Unit.ValidateLocation();
+            }
         }
     }
 
     public void RefreshSelfOnly() {
         chunk.Refresh();
+        Unit?.ValidateLocation();
     }
 
     public void RemoveOutgoingRiver() {
