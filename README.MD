@@ -83,4 +83,7 @@ Improved pathfinding & path highlighting.
 ## T18 ##
 Move units.
 
-It's moving not walking.
+It's moving not 'walking'.
+
+## T19 ##
+Now moving is 'walking'.
