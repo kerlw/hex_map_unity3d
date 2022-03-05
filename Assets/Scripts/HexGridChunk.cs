@@ -358,7 +358,7 @@ public class HexGridChunk : MonoBehaviour {
         terrain.AddTriangle(centerR, m.v4, m.v5);
 
         Vector3 indices;
-        indices.x = indices.y = indices.z = cell.TerrainTypeIndex;
+        indices.x = indices.y = indices.z = cell.Index;
         terrain.AddTriangleCellData(indices, weights1);
         terrain.AddQuadCellData(indices, weights1);
         terrain.AddQuadCellData(indices, weights1);

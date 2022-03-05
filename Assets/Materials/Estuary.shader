@@ -50,7 +50,7 @@ Shader "Custom/Estuary"
             float4 cell0 = GetCellData(v, 0);
             float4 cell1 = GetCellData(v, 1);
             
-            o.visibility = cell0.x * v * color.x + cell1.x * v.color.y;
+            o.visibility = cell0.x * v.color.x + cell1.x * v.color.y;
             o.visibility = lerp(0.25, 1, o.visibility);
         }
 
