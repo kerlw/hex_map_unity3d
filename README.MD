@@ -87,3 +87,7 @@ It's moving not 'walking'.
 
 ## T19 ##
 Now moving is 'walking'.
+
+## T20 ##
+Fog of war.
+
