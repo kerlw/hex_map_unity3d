@@ -91,3 +91,7 @@ Now moving is 'walking'.
 ## T20 ##
 Fog of war.
 
+More complex things about shader, render.
+
+## T21 ##
+Exploration, wonderful.

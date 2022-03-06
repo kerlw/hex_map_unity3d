@@ -9,8 +9,6 @@ public class HexMapEditor : MonoBehaviour {
         No
     }
 
-    public const int mapFileFormatVersion = 2;
-
     private OptionalToggle riverMode, roadMode, walledMode;
 
     // public Color[] colors;

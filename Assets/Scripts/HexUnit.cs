@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.IO;
 using UnityEngine;
 
@@ -18,6 +19,10 @@ public class HexUnit : MonoBehaviour {
     const float rotationSpeed = 180f;
 
     public HexGrid Grid { get; set; }
+
+    public int Speed {
+        get => 24;
+    }
 
     private const int visionRange = 3;
 
@@ -69,7 +74,7 @@ public class HexUnit : MonoBehaviour {
     }
 
     public bool IsValidDestination(HexCell cell) {
-        return !cell.IsUnderWater;
+        return cell.IsExplored && !cell.IsUnderWater && !cell.Unit;
     }
 
     public void Travel(List<HexCell> path) {
@@ -177,5 +182,24 @@ public class HexUnit : MonoBehaviour {
 
         transform.LookAt(point);
         orientation = transform.localRotation.eulerAngles.y;
+    }
+
+    public int GetMoveCose(HexCell fromCell, HexCell toCell, HexDirection direction) {
+        HexEdgeType edgeType = fromCell.GetEdgeType(toCell);
+        if (edgeType == HexEdgeType.Cliff) {
+            return -1;
+        }
+        
+        int moveCost = 0;
+        if (fromCell.HasRoadThroughEdge(direction)) {
+            moveCost += 1;
+        } else if (fromCell.Walled != toCell.Walled) {
+            return -1;
+        } else {
+            moveCost += edgeType == HexEdgeType.Flat ? 5 : 10;
+            moveCost += toCell.UrbanLevel + toCell.FarmLevel + toCell.PlantLevel;
+        }
+
+        return moveCost;
     }
 }
