@@ -99,3 +99,8 @@ Exploration, wonderful.
 ## T22 ##
 Advanced vision, make visibility transitions smoothly, make vision effected by view elevation.
 
+## T23 ##
+Generating maps, basic random map generation.
+
+> What kind of map-generating algorithm you need depends on the kind of maps that your app requires. There isn't a single best approach for this, but there will always be a trade-off between believability and playability.
+
