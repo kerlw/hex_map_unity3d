@@ -95,3 +95,7 @@ More complex things about shader, render.
 
 ## T21 ##
 Exploration, wonderful.
+
+## T22 ##
+Advanced vision, make visibility transitions smoothly, make vision effected by view elevation.
+

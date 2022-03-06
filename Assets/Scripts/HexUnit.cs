@@ -49,6 +49,10 @@ public class HexUnit : MonoBehaviour {
         }
     }
 
+    public int VisionRange {
+        get => 3;
+    }
+
     public void ValidateLocation() {
         transform.localPosition = location.Position;
     }
@@ -189,7 +193,7 @@ public class HexUnit : MonoBehaviour {
         if (edgeType == HexEdgeType.Cliff) {
             return -1;
         }
-        
+
         int moveCost = 0;
         if (fromCell.HasRoadThroughEdge(direction)) {
             moveCost += 1;
