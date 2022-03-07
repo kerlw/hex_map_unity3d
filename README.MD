@@ -106,3 +106,8 @@ Generating maps, basic random map generation.
 
 ## T24 ##
 Regions and erosion.
+
+## T25 ##
+Water cycle.
+
+Clouds and moisture, used to random terrain type.
