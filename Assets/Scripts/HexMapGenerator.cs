@@ -169,10 +169,9 @@ public class HexMapGenerator : MonoBehaviour {
     }
 
     HexCell GetRandomCell(MapRegion region) {
-        return grid.GetCell(
-            Random.Range(region.xMin, region.xMax),
-            Random.Range(region.zMin, region.zMax)
-        );
+        int x = Random.Range(region.xMin, region.xMax);
+        int z = Random.Range(region.zMin, region.zMax);
+        return grid.GetCell(x, z);
     }
 
     void CreateLand() {
@@ -292,7 +291,7 @@ public class HexMapGenerator : MonoBehaviour {
             HexCell cell = erodibleCells[index];
             HexCell targetCell = GetErosionTarget(cell);
 
-            cell.Elevation = -1;
+            cell.Elevation -= 1;
             targetCell.Elevation += 1;
 
             if (!IsErodible(cell)) {

@@ -125,7 +125,7 @@ public class HexCell : MonoBehaviour {
     }
 
     public int WaterLevel {
-        get { return waterLevel; }
+        get => waterLevel;
         set {
             if (waterLevel == value) {
                 return;
@@ -142,12 +142,10 @@ public class HexCell : MonoBehaviour {
         }
     }
 
-    public bool IsUnderWater {
-        get { return waterLevel > elevation; }
-    }
+    public bool IsUnderWater => waterLevel > elevation;
 
     public int Elevation {
-        get { return elevation; }
+        get => elevation;
         set {
             if (elevation == value) {
                 return;
@@ -171,13 +169,7 @@ public class HexCell : MonoBehaviour {
         }
     }
 
-    public int ViewElevation {
-        get { return elevation >= waterLevel ? elevation : waterLevel; }
-    }
-
-    // public Color Color {
-    //     get { return HexMetrics.colors[terrainTypeIndex]; }
-    // }
+    public int ViewElevation => elevation >= waterLevel ? elevation : waterLevel;
 
     public int TerrainTypeIndex {
         get { return terrainTypeIndex; }
@@ -189,29 +181,17 @@ public class HexCell : MonoBehaviour {
         }
     }
 
-    public float StreamBedY {
-        get { return (elevation + HexMetrics.streamBedElevationOffset) * HexMetrics.elevationStep; }
-    }
+    public float StreamBedY => (elevation + HexMetrics.streamBedElevationOffset) * HexMetrics.elevationStep;
 
-    public bool HasIncomingRiver {
-        get { return hasIncomingRiver; }
-    }
+    public bool HasIncomingRiver => hasIncomingRiver;
 
-    public bool HasOutgoingRiver {
-        get { return hasOutgoingRiver; }
-    }
+    public bool HasOutgoingRiver => hasOutgoingRiver;
 
-    public HexDirection IncomingRiver {
-        get { return incomingRiver; }
-    }
+    public HexDirection IncomingRiver => incomingRiver;
 
-    public HexDirection OutgoingRiver {
-        get { return outgoingRiver; }
-    }
+    public HexDirection OutgoingRiver => outgoingRiver;
 
-    public bool HasRiver {
-        get { return hasIncomingRiver || hasOutgoingRiver; }
-    }
+    public bool HasRiver => hasIncomingRiver || hasOutgoingRiver;
 
     public bool HasRoads {
         get {
@@ -224,21 +204,13 @@ public class HexCell : MonoBehaviour {
         }
     }
 
-    public bool HasRiverBeginOrEnd {
-        get { return hasIncomingRiver != hasOutgoingRiver; }
-    }
+    public bool HasRiverBeginOrEnd => hasIncomingRiver != hasOutgoingRiver;
 
-    public HexDirection RiverBeginOrEndDirection {
-        get { return hasIncomingRiver ? incomingRiver : outgoingRiver; }
-    }
+    public HexDirection RiverBeginOrEndDirection => hasIncomingRiver ? incomingRiver : outgoingRiver;
 
-    public float RiverSurfaceY {
-        get { return (elevation + HexMetrics.waterElevationOffset) * HexMetrics.elevationStep; }
-    }
+    public float RiverSurfaceY => (elevation + HexMetrics.waterElevationOffset) * HexMetrics.elevationStep;
 
-    public float WaterSurfaceY {
-        get { return (waterLevel + HexMetrics.waterElevationOffset) * HexMetrics.elevationStep; }
-    }
+    public float WaterSurfaceY => (waterLevel + HexMetrics.waterElevationOffset) * HexMetrics.elevationStep;
 
     public bool HasRiverThroughEdge(HexDirection direction) {
         return hasIncomingRiver && incomingRiver == direction ||
@@ -251,9 +223,7 @@ public class HexCell : MonoBehaviour {
 
     public HexGridChunk chunk;
 
-    public Vector3 Position {
-        get { return transform.localPosition; }
-    }
+    public Vector3 Position => transform.localPosition;
 
     [SerializeField] private HexCell[] neighbors;
 
