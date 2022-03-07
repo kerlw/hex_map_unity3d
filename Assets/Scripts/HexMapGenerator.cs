@@ -200,8 +200,13 @@ public class HexMapGenerator : MonoBehaviour {
     void SetTerrainType() {
         for (int i = 0; i < cellCount; i++) {
             HexCell cell = grid.GetCell(i);
-            if (!cell.IsUnderWater)
+            if (!cell.IsUnderWater) {
                 cell.TerrainTypeIndex = cell.Elevation - cell.WaterLevel;
+            }
+
+            cell.SetMapData(
+                (cell.Elevation - elevationMinimum) / (float) (elevationMaximum - elevationMinimum)
+            );
         }
     }
 
