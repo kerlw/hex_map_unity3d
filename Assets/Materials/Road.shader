@@ -22,6 +22,7 @@ Shader "Custom/Road"
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0
         
+        #include "HexMetrics.cginc"
         #include "Terrain/HexCellData.cginc"
 
         sampler2D _MainTex;
@@ -57,7 +58,7 @@ Shader "Custom/Road"
 
         void surf (Input IN, inout SurfaceOutputStandardSpecular o)
         {
-            float4 noise = tex2D(_MainTex, IN.worldPos.xz * 0.025);
+            float4 noise = tex2D(_MainTex, IN.worldPos.xz * (3 * TILING_SCALE));
             fixed4 c = _Color * ((noise.y * 0.75 + 0.25) * IN.visibility.x);
             float blend = IN.uv_MainTex.x;
             blend *= noise.x + 0.5;

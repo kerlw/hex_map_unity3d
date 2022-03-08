@@ -116,3 +116,6 @@ Clouds and moisture, used to random terrain type.
 Biomes and Rivers.
 
 Rivers algorithm is ok, biomes algorithm is not understand yet, maybe sth is wrong.
+
+## T27 ##
+Wrapping maps: connect west boundary and east boundary.

@@ -227,6 +227,8 @@ public class HexCell : MonoBehaviour {
 
     [SerializeField] private HexCell[] neighbors;
 
+    public int ColumnIndex { get; set; }
+
     public HexCell GetNeighbor(HexDirection direction) {
         return neighbors[(int) direction];
     }

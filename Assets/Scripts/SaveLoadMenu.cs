@@ -16,7 +16,7 @@ public class SaveLoadMenu : MonoBehaviour {
 
     private bool saveMode;
 
-    private const int mapFileVersion = 4;
+    private const int mapFileVersion = 5;
 
     public void Open(bool saveMode) {
         this.saveMode = saveMode;

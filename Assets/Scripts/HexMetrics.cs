@@ -10,6 +10,8 @@ public class HexMetrics {
 
     public const float innerRadius = outerRadius * outerToInner;
 
+    public const float innerDiameter = innerRadius * 2f;
+
     public const float solidFactor = 0.8f;
 
     public const float blendFactor = 1 - solidFactor;
@@ -57,6 +59,12 @@ public class HexMetrics {
     public const float bridgeDesignLength = 7f;
 
     private static HexHash[] hashGrid;
+
+    public static int wrapSize;
+
+    public static bool Wrapping {
+        get => wrapSize > 0;
+    }
 
     // public static Color[] colors;
 
@@ -140,7 +148,19 @@ public class HexMetrics {
     }
 
     public static Vector4 SampleNoise(Vector3 position) {
-        return noiseSource.GetPixelBilinear(position.x * noiseScale, position.y * noiseScale);
+        Vector4 sample = noiseSource.GetPixelBilinear(position.x * noiseScale, position.y * noiseScale);
+
+
+        if (Wrapping && position.x < innerDiameter * 1.15) {
+            Vector4 sample2 = noiseSource.GetPixelBilinear(
+                (position.x + wrapSize * innerDiameter) * noiseScale,
+                position.z * noiseScale
+            );
+
+            sample = Vector4.Lerp(sample2, sample, position.x * (1f / innerDiameter) - 0.5f);
+        }
+
+        return sample;
     }
 
     public const float hashGridScale = 0.25f;
