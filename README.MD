@@ -111,3 +111,8 @@ Regions and erosion.
 Water cycle.
 
 Clouds and moisture, used to random terrain type.
+
+## T26 ##
+Biomes and Rivers.
+
+Rivers algorithm is ok, biomes algorithm is not understand yet, maybe sth is wrong.
